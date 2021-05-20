@@ -34,6 +34,10 @@ div#content h1 {
     font-size: max(15px, 2vw);
 }
 
+div#content p {
+    font-size: max(10px, 1.5vw);
+}
+
 div#content img {
     width: 40vw;
 }
@@ -46,6 +50,7 @@ header#header #btn-exprorar:hover {
     position: absolute;
     bottom: 0;
     fill: #fff;
+    pointer-events: none;
 }
 
 a#btn-login {
@@ -76,8 +81,68 @@ div#container-principal {
     padding: 0;
 }
 
+section#cards {
+    width: 90%;
+    margin: auto;
+    padding: 50px;
+    display: flex;
+    justify-content: space-between;
+}
+
+section#cards div.card {
+    width: 30%;
+    padding: 10px;
+    align-items: center;
+    background: rgb(235, 235, 235);
+    opacity: 0;
+}
+
+div.card-create-anim {
+    animation: create-card 1s forwards;
+}
+
+
+section#cards img {
+    width: 20%;
+}
+
+@media (max-width: 688px) {
+    section#cards {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    section#cards div.card {
+        margin-top: 20px;
+        width: 70%;
+    }
+}
+
 @media (max-width: 604px) {
     div#img {
         display: none;
+    }
+
+    div#content div:nth-child(1) {
+        padding-top: 40px;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+    }
+
+    section#cards div.card {
+        margin-top: 20px;
+        width: 100%;
+    }
+}
+
+
+@keyframes create-card {
+    from {
+        transform: scale(0.5);
+    }
+    to {
+        transform: scale(1);
+        opacity: 1;
     }
 }
