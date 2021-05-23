@@ -6,11 +6,7 @@ class Router {
 
     static function index($params) {
 
-        if (file_exists(self::BASE_URL . $params[1] . '.html'))
-            echo "ok";
-
-        else 
-            echo "nao ok";
+        echo $params[1];
     }
 }
 
