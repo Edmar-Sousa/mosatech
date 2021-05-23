@@ -6,7 +6,7 @@ class Router {
 
     static function index($params) {
 
-        echo $params[1];
+        print_r($params[1]);
     }
 }
 
