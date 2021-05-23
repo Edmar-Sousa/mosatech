@@ -1,6 +1,0 @@
-{
-    "name": "rozana_pc/php-trabalho",
-    "require": {
-        "twig/twig": "^3.3"
-    }
-}
