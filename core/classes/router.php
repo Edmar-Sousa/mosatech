@@ -9,8 +9,9 @@ class Router {
 
         $file_name = empty($params[2]) ? 'index' : $params[2];
 
-        if (file_exists(self::BASE_URL . $file_name . '.html'))
-            echo "ok";
+        $path = self::BASE_URL . $file_name . '.html';
+        if (file_exists($path))
+            require_once $path;
 
         else 
             echo "nao ok";
