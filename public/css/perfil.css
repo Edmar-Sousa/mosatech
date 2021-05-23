@@ -1,0 +1,27 @@
+main#main {
+    margin: auto;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    width: 80%;
+    padding: 30px 20px;
+}
+
+main#main #img {
+    width: 200px;
+    height: 200px;
+    margin: 20px 0;
+    border-radius: 50%;
+    background: rgb(129, 129, 129);
+}
+
+main#main h2, h3 {
+    margin: 20px 0;
+}
+
+main#main button {
+    background: rgb(142, 3, 170);
+    border: none;
+    border-radius: 5px;
+    padding: 5px 20px;
+}
