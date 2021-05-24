@@ -2,8 +2,12 @@
 
 const BASE_URL_VIEWS = __DIR__ . '/../views';
 
-$loader = new \Twig\Loader\FilesystemLoader(BASE_URL_VIEWS);
+if (!isset($_SESSION['usuario_logado'])) {
+    header('Location: login');
+    die();
+}
 
+$loader = new \Twig\Loader\FilesystemLoader(BASE_URL_VIEWS);
 $twig = new \Twig\Environment($loader);
 
 echo $twig->render(
