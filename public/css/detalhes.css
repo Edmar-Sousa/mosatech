@@ -27,11 +27,11 @@ main#main button {
     background: rgb(131, 7, 161);
 }
 
-ul {
+main#main  ul {
     list-style: none;
 }
 
-ul li {
+main#main ul li {
     margin: 20px 0;
 }
 
