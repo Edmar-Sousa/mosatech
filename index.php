@@ -2,4 +2,6 @@
 
 require_once 'core/classes/router.php';
 
-Router::index($_GET['url']);
+
+$uri = isset($_GET['url']) ? $_GET['url'] : 'index';
+Router::index($uri);
