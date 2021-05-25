@@ -3,9 +3,20 @@
 include_once __DIR__ . '/database/connectionDB.php';
 include_once __DIR__ . '/database/queryExec.php';
 
+include_once 'formValid.php';
 
 class LogarUsuario {
-    static function logar($email, $senha) {
+
+    static private function crfs_validate($crfs, $route) {
+        if (!Form::valid_crfs_token($crfs)) {
+            header("Location: $route");
+            die();
+        }
+    }
+
+    static function logar($crfs, $email, $senha, $route) {
+        self::crfs_validate($crfs, $route);
+
         $sql = "SELECT * FROM usuarios WHERE email = '$email' AND senhaUsuario = '$senha'";
 
         $database = new ConnectionDB();
@@ -23,7 +34,8 @@ class LogarUsuario {
         die();
     }
 
-    static function registrar($nome, $email, $senha) {
+    static function registrar($crfs, $nome, $email, $senha, $route) {
+        self::crfs_validate($crfs, $route);
         $id = uniqid();
 
         $sql = "INSERT INTO usuarios(idUsuario, permissaoAdmin, nomeUsuario, email, senhaUsuario) VALUES ('$id', 0, '$nome', '$email', '$senha')";

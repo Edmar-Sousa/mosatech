@@ -13,6 +13,10 @@
 
     <form action="login" method="POST">
       <div class="form-group">
+        <input type="hidden" name="csrf" value="{{ csrf }}">
+      </div>
+
+      <div class="form-group">
         <label for="email"><i class="fa fa-envelope" aria-hidden="true"></i> Email</label>
         <input type="email" class="form-control" name="email" id="email" required>
       </div>

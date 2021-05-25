@@ -5,13 +5,16 @@ include_once __DIR__ . '/../classes/formValid.php';
 include_once __DIR__ . '/../classes/usuario.php';
 
 
-if (isset($_POST['email']) and isset( $_POST['senha'])) {
-    $email = Form::clear_field($_POST['email']);
-    $senha = Form::clear_field($_POST['senha']);
-    LogarUsuario::logar($email, $senha);
-}
+if ($_SERVER['REQUEST_METHOD'] == 'POST')
+    if (isset($_POST['email']) and isset( $_POST['senha']) and isset($_POST['csrf'])) {
+        $email = Form::clear_field($_POST['email']);
+        $senha = Form::clear_field($_POST['senha']);
+        $crfs = $_POST['csrf'];
+
+        LogarUsuario::logar($crfs, $email, $senha, 'login');
+    }
 
 
 echo $twig->render(
-    'login.html', array('title' => 'ok')
+    'login.html', array('csrf' => Form::gerar_token())
 );
