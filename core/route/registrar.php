@@ -1,11 +1,21 @@
 <?php
 
-const BASE_URL_VIEWS = __DIR__ . '/../views';
+include_once __DIR__ . '/../classes/configTwig.php';
+include_once __DIR__ . '/../classes/formValid.php';
+include_once __DIR__ . '/../classes/usuario.php';
 
-$loader = new \Twig\Loader\FilesystemLoader(BASE_URL_VIEWS);
+$msg = array();
 
-$twig = new \Twig\Environment($loader);
+if (isset($_POST['nome'])  and  isset($_POST['email']) and 
+    isset($_POST['senha']) and  isset($_POST['senha-comfirm'])) {
+
+        $nome =  Form::clear_field($_POST['nome']);
+        $email = Form::clear_field($_POST['email']);
+        $senha = Form::clear_field($_POST['senha']);
+
+        LogarUsuario::registrar($nome, $email, $senha);
+}
 
 echo $twig->render(
-    'registrar.html', array('title' => 'ok')
+    'registrar.html', $msg
 );

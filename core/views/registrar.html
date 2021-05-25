@@ -11,19 +11,19 @@
             Mosatech
         </div>
 
-        <form onsubmit="return validate()" name="register">
+        <form onsubmit="return validate()" name="register" method="POST" action="registrar">
             <div class="form-group">
                 <label for="nome"><i class="fa fa-user" aria-hidden="true"></i> Nome</label>
-                <input type="text" class="form-control" id="nome" required>
+                <input type="text" class="form-control" name="nome" id="nome" required>
             </div>
 
             <div class="form-group">
                 <label for="email"><i class="fa fa-envelope" aria-hidden="true"></i> Email</label>
-                <input type="email" class="form-control" id="email" required>
+                <input type="email" class="form-control" name="email" id="email" required>
             </div>
 
             <div class="form-group">
-                <div class="alert" id="alert-senha" style="display: none;"></div>
+                <div class="alert" id="alert-senha" style="display: none;">{{ senha-msg }}</div>
                 <div class="row">
                     <div class="col">
                         <label for="senha"><i class="fa fa-key" aria-hidden="true"></i> Senha</label>
@@ -51,7 +51,7 @@
             const senhaConfirm = document.forms['register']['senha-comfirm'].value;
 
             if (senha != senhaConfirm) {
-                document.getElementById('alert-senha').innerText = 'senha e comfirmar senha estão diferentes'
+                document.getElementById('alert-senha').innerText = 'senha e confirmar senha estão diferentes'
                 document.getElementById('alert-senha').style.display = 'block'
                 return false
             }

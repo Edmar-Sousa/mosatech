@@ -1,16 +1,14 @@
 <?php
 
-const BASE_URL_VIEWS = __DIR__ . '/../views';
+include_once __DIR__ . '/../classes/configTwig.php';
+include_once __DIR__ . '/../classes/usuario.php';
 
-if (!isset($_SESSION['usuario_logado'])) {
-    header('Location: login');
-    die();
-}
+$logado = FALSE;
 
-$loader = new \Twig\Loader\FilesystemLoader(BASE_URL_VIEWS);
+if (isset($_SESSION['usuario_logado']))
+    $logado = TRUE;
 
-$twig = new \Twig\Environment($loader);
 
 echo $twig->render(
-    'busca.html', array()
+    'busca.html', array('logado' => $logado)
 );
