@@ -1,12 +1,8 @@
 <?php
 
 include_once __DIR__ . '/../classes/configTwig.php';
-
-$logado = FALSE;
-
-if (isset($_SESSION['usuario_logado']))
-    $logado = TRUE;
+include_once __DIR__ . '/../classes/function.php';
 
 echo $twig->render(
-    'index.html', array('logado' => $logado )
+    'index.html', array( 'logado' => $logado, 'admin' => $admin )
 );

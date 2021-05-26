@@ -24,7 +24,6 @@ class ExecQuery {
 
     static function insert($conn, $query) {
         self::query_exec($conn, $query);
-
     }
 }
 

@@ -14,6 +14,7 @@ class LogarUsuario {
         }
     }
 
+
     static function logar($crfs, $email, $senha, $route) {
         self::crfs_validate($crfs, $route);
 
@@ -34,6 +35,7 @@ class LogarUsuario {
         die();
     }
 
+    
     static function registrar($crfs, $nome, $email, $senha, $route) {
         self::crfs_validate($crfs, $route);
         $id = uniqid();
