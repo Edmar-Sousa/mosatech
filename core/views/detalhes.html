@@ -13,18 +13,19 @@
         </header>
 
         <main id="main">
-            <h2>Sansungdha 13239+</h2>
+            <h2>{{ produto['nomeProduto'] }}</h2>
 
             <div id="container">
-                <img src="public/img/smart.png">
+                <img src="{{ produto['imgSrc'] }}">
 
                 <div>
                     <ul>
-                        <li><i class="fa fa-camera" aria-hidden="true"></i> Camera de 10K</li>
-                        <li><i class="fa fa-microchip" aria-hidden="true"></i> Processador 4 core 1000MHz</li>
-                        <li><i class="fa fa-area-chart" aria-hidden="true"></i> 4G de RAM</li>
-                        <li><i class="fa fa-tablet" aria-hidden="true"></i> Tela 4k</li>
-                        <li><i class="fa fa-folder" aria-hidden="true"></i> 128GB armazenamento</li>
+                        <li><i class="fa fa-camera" aria-hidden="true"></i> {{ produto['cameraProduto'] }}</li>
+                        <li><i class="fa fa-microchip" aria-hidden="true"></i> {{ produto['procesProduto'] }}</li>
+                        <li><i class="fa fa-area-chart" aria-hidden="true"></i> {{ produto['menRamProduto'] }}</li>
+                        <li><i class="fa fa-tablet" aria-hidden="true"></i> {{ produto['telaDoProduto'] }}</li>
+                        <li><i class="fa fa-folder" aria-hidden="true"></i> {{ produto['armazeProduto'] }}</li>
+                        <li>Preço: R$ {{ produto['precoProduto'] }}</li>
 
                         <button>Adicionar ao Carrinho</button>
                     </ul>

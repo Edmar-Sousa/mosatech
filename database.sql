@@ -1,6 +1,7 @@
 CREATE TABLE produtos (
 	idProduto     VARCHAR(255) NOT NULL UNIQUE,
     imgSrc        VARCHAR(255) NOT NULL,
+    precoProduto  VARCHAR(10)  NOT NULL,
     nomeProduto   VARCHAR(100) NOT NULL,
     cameraProduto VARCHAR(100) NOT NULL,
     procesProduto VARCHAR(100) NOT NULL,

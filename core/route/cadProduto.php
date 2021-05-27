@@ -1,9 +1,14 @@
 <?php
 
-include_once __DIR__ . '/../classes/configTwig.php';
 include_once __DIR__ . '/../classes/function.php';
-include_once __DIR__ . '/../classes/formValid.php';
 
+if (!$logado or empty($admin)) {
+    header('Location: login');
+    die();
+}
+
+include_once __DIR__ . '/../classes/configTwig.php';
+include_once __DIR__ . '/../classes/formValid.php';
 
 echo $twig->render(
     'cadProduto.html', array(

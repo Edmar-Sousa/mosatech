@@ -5,6 +5,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
     die();
 }
 
+// validar token do formulario
+include_once __DIR__ . '/../classes/formValid.php';
+if (!Form::valid_crfs_token($_POST['csrf'])) {
+    header('Location: cadProduto');
+    die();
+}
+
+
 // upload file
 $extUploadFiles = ['jpg', 'png'];
 
@@ -36,8 +44,9 @@ $procProduto = $_POST['processador'];
 $RAMProduto  = $_POST['RAM'];
 $telaProduto = $_POST['tela'];
 $armaProduto = $_POST['armazenamento'];
+$preco = $_POST['preco'];
 
-$sql = "INSERT INTO produtos(idProduto, nomeProduto, cameraProduto, procesProduto, menRamProduto, telaDoProduto,  armazeProduto, imgSrc) VALUES ('$id', '$nomeProduto', '$cameProduto', '$procProduto', '$RAMProduto', '$telaProduto', '$armaProduto', '$nameUpload')";
+$sql = "INSERT INTO produtos(idProduto, nomeProduto, cameraProduto, procesProduto, menRamProduto, telaDoProduto,  armazeProduto, imgSrc, precoProduto) VALUES ('$id', '$nomeProduto', '$cameProduto', '$procProduto', '$RAMProduto', '$telaProduto', '$armaProduto', '$nameUpload', '$preco')";
 
 $database = new ConnectionDB();
 ExecQuery::insert($database->connect(), $sql);

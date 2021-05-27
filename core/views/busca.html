@@ -3,7 +3,7 @@
 {% block style %}
     <link rel="stylesheet" href="public/css/main.css">
     <link rel="stylesheet" href="public/css/header.css">
-    <link rel="stylesheet" href="public/css/busca.css">
+    <link rel="stylesheet" href="public/css/busca.css?v=2">
 {% endblock %}
 
 
@@ -14,65 +14,48 @@
         </header>
 
         <main id="main">
-            <form>
-                
+            <form action="busca" method="POST"> 
                 <div class="form-group">
                     <label for="text"><h2>Pesquisar produto</h2></label>
                     <div id="form-layout">
-                        <input type="text" class="form-control" id="text">
-                        <button type="submit" class="btn btn-primary">Cadastrar</button>
+                        <input type="text" name="pesquisar" class="form-control" id="text">
+                        <button type="submit" class="btn btn-primary">Pesquisar</button>
                     </div>
                 </div>
             </form>
 
             <div>
-                <div class="produto">
-                    <img src="public/img/smart.png">
 
-                    <div>
-                        <h3>Sansung M32000+</h3>
-                        <p>Preço: R$3200,00</p>
-                        <a href="detalhes.html">
-                            <button>Detalhes</button>
-                        </a>
-                    </div>
-                </div>
+                {% if pesquisa != ' ' %}
+                <h3>Resultado: {{ pesquisa }} </h3>
+                {% endif %}
 
-                <div class="produto">
-                    <img src="public/img/smart.png">
+                {% if resultados|length > 0 %}
 
-                    <div>
-                        <h3>Sansung M32000+</h3>
-                        <p>Preço: R$3200,00</p>
-                        <a href="detalhes.html">
-                            <button>Detalhes</button>
-                        </a>
-                    </div>
-                </div>
+                    {% for produto in resultados %}
+                        <div class="produto">
+                            <img src="{{ produto['imgSrc'] }}">
 
-                <div class="produto">
-                    <img src="public/img/smart.png">
+                            <div>
+                                <h3>{{ produto['nomeProduto'] }}</h3>
+                                <p>R$ {{ produto['precoProduto'] }}</p>
 
-                    <div>
-                        <h3>Sansung M32000+</h3>
-                        <p>Preço: R$3200,00</p>
-                        <a href="detalhes.html">
-                            <button>Detalhes</button>
-                        </a>
-                    </div>
-                </div>
+                                <form action="detalhes" method="POST" >
+                                    <input type="hidden" name="idProduto" value="{{ produto['idProduto'] }}">
+                                    <button type="submit">Detalhes</button>
+                                </form>
+                            </div>
+                        </div>
+                    {% endfor %}
 
-                <div class="produto">
-                    <img src="public/img/smart.png">
+                {% else %}
 
-                    <div>
-                        <h3>Sansung M32000+</h3>
-                        <p>Preço: R$3200,00</p>
-                        <a href="detalhes.html">
-                            <button>Detalhes</button>
-                        </a>
-                    </div>
-                </div>
+                    <br>
+                    <h4>Nenhum resutado encontrado!</h4>
+                    <br>
+                    
+                {% endif %}
+
             </div>
         </main>
 
