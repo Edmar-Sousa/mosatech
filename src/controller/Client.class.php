@@ -1,29 +1,35 @@
 <?php 
 
 
-class Client {
+class Client extends View {
     static function index() {
-        View::render('index');
+        global $view;
+        $view->render('index.html');
     }
 
     static function login() {
-        echo "login.html <br>";
+        global $view;
+        $view->render('login.html');
     }
 
     static function register() {
-        echo "register.html <br>";
+        global $view;
+        $view->render('register.html');
     }
 
     static function explorer() {
-        echo "explorar.html <br>";
+        global $view;
+        $view->render('explorar.html');
     }
 
     static function detalhes() {
-        echo "detalhes.html <br>";
+        global $view;
+        $view->render('detalhes.html');
     }
 
     static function profile() {
-        echo "perfil.html <br>";
+        global $view;
+        $view->render('perfil.html');
     } 
 
     static function exit() {

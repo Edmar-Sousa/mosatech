@@ -1,0 +1,47 @@
+{% extends "template/base.html" %}
+
+{% block style %}
+    <link rel="stylesheet" href="public/css/main.css">
+    <link rel="stylesheet" href="public/css/header.css">
+    <link rel="stylesheet" href="public/css/detalhes.css">
+{% endblock %}
+
+{% block content %}
+    <div class="container" id="container-principal">
+        <header id="header-busca-page">
+            {{ include("template/navbar.html") }}
+        </header>
+
+        <main id="main">
+            <h2>{{ produto['nomeProduto'] }}</h2>
+
+            <div id="container">
+                <img src="{{ produto['imgSrc'] }}">
+
+                <div>
+                    <ul>
+                        <li><i class="fa fa-camera" aria-hidden="true"></i> {{ produto['cameraProduto'] }}</li>
+                        <li><i class="fa fa-microchip" aria-hidden="true"></i> {{ produto['procesProduto'] }}</li>
+                        <li><i class="fa fa-area-chart" aria-hidden="true"></i> {{ produto['menRamProduto'] }}</li>
+                        <li><i class="fa fa-tablet" aria-hidden="true"></i> {{ produto['telaDoProduto'] }}</li>
+                        <li><i class="fa fa-folder" aria-hidden="true"></i> {{ produto['armazeProduto'] }}</li>
+                        <li>Preço: R$ {{ produto['precoProduto'] }}</li>
+
+                        <form action="carrinho" method="get">
+                            <input type="hidden" name="id" value="{{ produto['idProduto'] }}">
+                            <input type="hidden" name="nome" value="{{ produto['nomeProduto'] }}">
+                            <input type="hidden" name="src" value="{{ produto['imgSrc'] }}">
+                            <input type="hidden" name="pre" value="{{ produto['precoProduto'] }}">
+
+                            <button type="submit">Adicionar ao Carrinho</button>
+                        </form>
+                    </ul>
+                </div>
+            </div>
+        </main>
+
+        {{ include("template/comentarios.html") }}
+        {{ include("template/footer.html") }}
+
+    </div>
+{% endblock %}

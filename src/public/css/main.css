@@ -1,0 +1,276 @@
+body {
+    background: rgb(255, 255, 255);
+}
+
+.flex-menu {
+    display: flex;
+    align-items: right;
+}
+
+.color-icon-black {
+    color: #000;
+}
+
+.color-icon-black:hover {
+    color: #000;
+}
+
+header#header {
+    width: 100%;
+    min-height: 440px;
+    height: 90%;
+    position: relative;
+    background: linear-gradient(rgb(142, 3, 170), rgb(252, 43, 217));
+}
+
+header#header #btn-exprorar {
+    max-width: 200px;
+    width: 100%;
+    height: 40px;
+    background: none;
+    border: 1px solid #000;
+    border-radius: 10px;
+}
+
+div#content {
+    display: flex;
+    align-items: center;
+    padding: 40px;
+}
+
+div#content h1 {
+    font-size: max(20px, 3vw);
+}
+
+div#content p {
+    font-size: max(10px, 1.5vw);
+}
+
+div#content img {
+    width: 40vw;
+}
+
+header#header #btn-exprorar:hover {
+    background: rgb(202, 26, 3);
+}
+
+.clip {
+    position: absolute;
+    bottom: 0;
+    fill: #fff;
+    pointer-events: none;
+}
+
+
+#logo {
+    font-family: 'Major Mono Display', monospace;
+}
+
+#logo img {
+    width: 30px;
+}
+
+nav.navbar {
+    background: none !important;
+}
+
+div#container-principal {
+    max-width: 2000px;
+    padding: 0;
+}
+
+section#cards {
+    width: 90%;
+    margin: auto;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+}
+
+section#cards div.card {
+    width: 30%;
+    padding: 10px;
+    align-items: center;
+    background: rgb(235, 235, 235);
+    opacity: 0;
+}
+
+div.card-create-anim {
+    animation: create-card 1s forwards;
+}
+
+
+section#cards img {
+    width: 20%;
+}
+
+section#destaque {
+    padding: 20px 0;
+    margin-top: 40px;
+    background: rgb(238, 238, 238);
+}
+
+section#destaque i {
+    background: rgb(131, 7, 161);
+    color: rgb(226, 226, 226);
+    padding: 10px;
+    border-radius: 5px;
+}
+
+section#destaque h2 {
+    margin-top: 60px;
+    text-align: center;
+}
+
+
+section#destaque img {
+    margin-right: 80px;
+}
+
+div#destaque-div {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+div.card-sec {
+    max-width: 300px;
+    width: 100%;
+    padding: 10px;
+}
+
+
+section#bg-sep {
+    position: relative;
+    background: linear-gradient(rgb(142, 3, 170), rgb(252, 43, 217)), url('../img/hand-phone.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-blend-mode: screen;
+    height: 500px;
+}
+
+
+section#comentarios {
+    width: 90%;
+    margin: 60px auto;
+}
+
+section#comentarios div.comentario {
+    width: 80%;
+    padding: 20px;
+    margin: auto;
+}
+
+section#comentarios div.comentario div.user-img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50px;
+    margin-right: 20px;
+    background: rgb(77, 60, 60);
+}
+
+section#comentarios div.header-comentario {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+}
+
+
+footer.footer-page {
+    padding: 50px;
+    background: rgb(16, 0, 20);
+}
+
+footer.footer-page h3 {
+    text-align: center;
+    color: rgb(221, 221, 221);
+}
+
+footer.footer-page div.footer-group {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 20px 0;
+    align-items: center;
+    color: rgb(221, 221, 221);
+}
+
+footer.footer-page div.footer-group h5 {
+    font-size: max(15px, 1.5vw);
+}
+
+footer.footer-page div.footer-content {
+    display: flex;
+    width: 80%;
+    margin: auto;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+footer.footer-page div.footer-group img {
+    width: 20%;
+    margin-right: 10px; 
+}
+
+@media (max-width: 852px) {
+    section#cards {
+        flex-direction: column;
+        align-items: center;
+        padding: 10px;
+    }
+
+    section#cards div.card {
+        margin-top: 20px;
+        width: 70%;
+    }
+}
+
+@media (max-width: 604px) {
+    div#img {
+        display: none;
+    }
+
+    div#content div:nth-child(1) {
+        padding-top: 40px;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+    }
+
+    section#cards div.card {
+        margin-top: 20px;
+        width: 100%;
+    }
+
+    div#destaque-div {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    section#destaque img {
+        width: 70%;
+        margin-right: 0;
+        margin-bottom: 20px;
+    }
+
+    footer.footer-page div.footer-group {
+        justify-content: center;
+    }
+
+    div.header-comentario {
+        justify-content: center;
+    }
+}
+
+
+@keyframes create-card {
+    from {
+        transform: scale(0.5);
+    }
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}

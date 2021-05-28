@@ -36,6 +36,15 @@ class Router {
                 echo "No method '{$call_function[1]}' in class '{$call_function[0]}' <br>";
         }
 
+        else {
+            global $view;
+            
+            $view->render('error.html', array(
+                'title' => 'Router not exists!',
+                'msg'   => "The Router: {$url} not exist"
+            ));
+        }
+
     }
 }
 

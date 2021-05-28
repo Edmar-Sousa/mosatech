@@ -1,1 +1,91 @@
-<h1>okkkk</h1>
+{% extends "template/base.html" %}
+
+{% block style %}
+<link rel="stylesheet" href="public/css/main.css">
+{% endblock %}
+
+{% block content %}
+<div class="container" id="container-principal">
+    <header id="header">
+        {{ include("template/navbar.html") }}
+
+        <div id="content">
+            <div>
+                <h1>O site certo para comprar seu smartphone!</h1>
+                <p>
+                    Precisa trocar de celular ou quer presentear alguém ?
+                    Então Você está no lugar certo ! Aqui é um espaço exclusivo pra você que
+                    busca qual o melhor celular pra comprar.
+                </p>
+
+                <a href="busca">
+                    <button id="btn-exprorar">
+                        <i class="fa fa-compass" aria-hidden="true"></i>
+                        Explorar loja
+                    </button>
+                </a>
+            </div>
+
+            <div id="img">
+                <img src="public/img/smart.png" alt="smartphone">
+            </div>
+        </div>
+
+        <svg class="clip" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
+            <path fill-opacity="1"
+                d="M0,224L48,224C96,224,192,224,288,208C384,192,480,160,576,165.3C672,171,768,213,864,240C960,267,1056,277,1152,256C1248,235,1344,181,1392,154.7L1440,128L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z">
+            </path>
+        </svg>
+    </header>
+
+    {{ include("template/cards.html") }}
+
+    <section id="destaque">
+
+        <h2>Celular em destaque na loja mosatech</h2>
+
+        <div id="destaque-div">
+            <img src="public/img/imagens.png" alt="xiamoi">
+
+            <div>
+                <div class="card-sec">
+                    <h3><i class="fa fa-camera" aria-hidden="true"></i> Camera</h3>
+                    <p>
+                        64 Mp + 5 Mp + 5 Mp + 12 Mp <br>
+                        9238 x 6928 pixel de Resolução
+                    </p>
+                </div>
+
+                <div class="card-sec">
+                    <h3><i class="fa fa-microchip" aria-hidden="true"></i> Processador</h3>
+                    <p>
+                        2x 2.2 GHz Kyro 470 Gold + 6x 1.8 GHz Kyro 470 Silver
+                    </p>
+                </div>
+
+                <div class="card-sec">
+                    <h3><i class="fa fa-area-chart" aria-hidden="true"></i> Desempenho</h3>
+                    <p>
+                        6 GB de RAM
+                    </p>
+                </div>
+            </div>
+
+        </div>
+
+    </section>
+
+    <section id="bg-sep">
+        <svg class="clip" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
+            <path fill-opacity="1"
+                d="M0,288L40,266.7C80,245,160,203,240,202.7C320,203,400,245,480,245.3C560,245,640,203,720,202.7C800,203,880,245,960,272C1040,299,1120,309,1200,277.3C1280,245,1360,171,1400,133.3L1440,96L1440,320L1400,320C1360,320,1280,320,1200,320C1120,320,1040,320,960,320C880,320,800,320,720,320C640,320,560,320,480,320C400,320,320,320,240,320C160,320,80,320,40,320L0,320Z">
+            </path>
+        </svg>
+    </section>
+
+    {{ include("template/comentarios.html") }}
+
+    {{ include("template/footer.html") }}
+
+</div>
+{% endblock %}

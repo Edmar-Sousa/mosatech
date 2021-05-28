@@ -1,0 +1,51 @@
+main#main {
+    padding: 20px;
+}
+
+div#form-layout {
+    width: 90%;
+    margin: auto;
+    
+    display: flex;
+}
+
+div.produto {
+    display: flex;
+    align-items: center;
+}
+
+div.produto img {
+    min-width: 100px;
+    margin-right: 20px;
+    width: 10%;
+}
+
+div.produto button {
+    background: rgb(142, 3, 170);
+    border: none;
+    border-radius: 5px;
+    padding: 5px 20px;
+}
+
+div#form-layout button {
+    margin-left: 20px;
+}
+
+div.produto button#excluir {
+    margin-top: 10px;
+    background: rgb(209, 25, 25);
+}
+
+@media (max-width: 425px) {
+    div#form-layout {
+        flex-direction: column;
+    }
+
+    div#form-layout button {
+        margin: 20px 0;
+    }
+
+    div.produto {
+        flex-direction: column;
+    }
+}
