@@ -2,10 +2,6 @@
 
 require_once 'vendor/autoload.php';
 
-session_start();
+include_once 'core/core.php';
+include_once 'src/Router.php';
 
-require_once 'core/classes/router.php';
-
-
-$uri = isset($_GET['url']) ? $_GET['url'] : 'index';
-Router::index($uri);
