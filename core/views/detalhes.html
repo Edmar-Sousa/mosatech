@@ -27,7 +27,14 @@
                         <li><i class="fa fa-folder" aria-hidden="true"></i> {{ produto['armazeProduto'] }}</li>
                         <li>Preço: R$ {{ produto['precoProduto'] }}</li>
 
-                        <button>Adicionar ao Carrinho</button>
+                        <form action="carrinho" method="get">
+                            <input type="hidden" name="id" value="{{ produto['idProduto'] }}">
+                            <input type="hidden" name="nome" value="{{ produto['nomeProduto'] }}">
+                            <input type="hidden" name="src" value="{{ produto['imgSrc'] }}">
+                            <input type="hidden" name="pre" value="{{ produto['precoProduto'] }}">
+
+                            <button type="submit">Adicionar ao Carrinho</button>
+                        </form>
                     </ul>
                 </div>
             </div>

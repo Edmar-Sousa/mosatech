@@ -3,7 +3,7 @@
 {% block style %}
     <link rel="stylesheet" href="public/css/main.css">
     <link rel="stylesheet" href="public/css/header.css">
-    <link rel="stylesheet" href="public/css/busca.css">
+    <link rel="stylesheet" href="public/css/busca?v=2.css">
 {% endblock %}
 
 {% block content %}
@@ -14,57 +14,37 @@
 
         <main id="main">
             <div>
+            {% if produto|length > 0 %}
+
+                {% for prod in produto %}
                 <div class="produto">
-                    <img src="public/img/smart.png">
+                    <img src="{{ prod[2] }}">
 
                     <div>
-                        <h3>Sansung M32000+</h3>
-                        <p>Preço: R$3200,00</p>
-                        <a href="detalhes.html">
-                            <button>Confirmar</button>
+                        <h3>{{ prod[1] }}</h3>
+                        <p>Preço: R$ {{ prod[3] }}</p>
+
+                        <button>Confirmar</button>
+                        <form action="carrinho" method="GET">
+                            <input type="hidden" name="idProdDel" value="{{ prod[0] }}">
                             <button id="excluir">Excluir</button>
-                        </a>
+                        </form>
                     </div>
                 </div>
+                {% endfor %}
+            {% else %}
+                <br>
+                <br>
+                <br>
+                <br>
+                <h1>Nenhum item no carrinho!</h1>
+                <a href="busca" >Faça uma compra!</a>
+                <br>
+                <br>
+                <br>
+                <br>
+            {% endif %}
 
-                <div class="produto">
-                    <img src="public/img/smart.png">
-
-                    <div>
-                        <h3>Sansung M32000+</h3>
-                        <p>Preço: R$3200,00</p>
-                        <a href="detalhes.html">
-                            <button>Confirmar</button>
-                            <button id="excluir">Excluir</button>
-                        </a>
-                    </div>
-                </div>
-
-                <div class="produto">
-                    <img src="public/img/smart.png">
-
-                    <div>
-                        <h3>Sansung M32000+</h3>
-                        <p>Preço: R$3200,00</p>
-                        <a href="detalhes.html">
-                            <button>Confirmar</button>
-                            <button id="excluir">Excluir</button>
-                        </a>
-                    </div>
-                </div>
-
-                <div class="produto">
-                    <img src="public/img/smart.png">
-
-                    <div>
-                        <h3>Sansung M32000+</h3>
-                        <p>Preço: R$3200,00</p>
-                        <a href="detalhes.html">
-                            <button>Confirmar</button>
-                            <button id="excluir">Excluir</button>
-                        </a>
-                    </div>
-                </div>
             </div>
         </main>
 

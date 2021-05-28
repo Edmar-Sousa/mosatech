@@ -19,19 +19,3 @@ CREATE TABLE usuarios (
     email        VARCHAR(40)  NOT NULL,
     senhaUsuario VARCHAR(255) NOT NULL
 );
-
-
-CREATE TABLE comentariosProduto(
-	fkProduto 		  VARCHAR(255) NOT NULL,
-    textoComentario	  VARCHAR(255) NOT NULL,
-    
-    FOREIGN KEY (fkProduto) REFERENCES produtos(idProduto)
-);
-
-
-CREATE TABLE comentariosSite (
-	fkUsuario 		  VARCHAR(255) NOT NULL,
-    textoComentario	  VARCHAR(255) NOT NULL,
-    
-    FOREIGN KEY (fkUsuario) REFERENCES usuarios(idUsuario) 
-);

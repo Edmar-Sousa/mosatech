@@ -32,6 +32,7 @@ div#form-layout button {
 }
 
 div.produto button#excluir {
+    margin-top: 10px;
     background: rgb(209, 25, 25);
 }
 
