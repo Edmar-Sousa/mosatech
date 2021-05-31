@@ -14,7 +14,7 @@
         </header>
 
         <main id="main">
-            <form action="busca" method="POST"> 
+            <form action="explorar" method="POST"> 
                 <div class="form-group">
                     <label for="text"><h2>Pesquisar produto</h2></label>
                     <div id="form-layout">
@@ -40,7 +40,7 @@
                                 <h3>{{ produto['nomeProduto'] }}</h3>
                                 <p>R$ {{ produto['precoProduto'] }}</p>
 
-                                <form action="detalhes" method="POST" >
+                                <form action="detalhes" method="GET" >
                                     <input type="hidden" name="idProduto" value="{{ produto['idProduto'] }}">
                                     <button type="submit">Detalhes</button>
                                 </form>

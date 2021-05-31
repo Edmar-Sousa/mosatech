@@ -25,7 +25,7 @@
                         <p>Preço: R$ {{ prod[3] }}</p>
 
                         <button>Confirmar</button>
-                        <form action="carrinho" method="GET">
+                        <form action="delProd" method="GET">
                             <input type="hidden" name="idProdDel" value="{{ prod[0] }}">
                             <button id="excluir">Excluir</button>
                         </form>
@@ -38,7 +38,7 @@
                 <br>
                 <br>
                 <h1>Nenhum item no carrinho!</h1>
-                <a href="busca" >Faça uma compra!</a>
+                <a href="explorar" >Faça uma compra!</a>
                 <br>
                 <br>
                 <br>

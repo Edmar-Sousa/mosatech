@@ -3,12 +3,10 @@
 
 class Auth {
     static function logar($crfs, $email, $senha) {
-        global $database, $router;
-
+        global $router;
         if (!Form::valid_crfs_token($crfs)) $router->redirect('login');
 
-        $sql = "SELECT * FROM usuarios WHERE email = '$email' AND senhaUsuario = '$senha'";
-        $result = ExecQuery::find($database->connect(), $sql);
+        $result = Usuario::select_usuario($email, $senha);
 
         if (empty($result)) 
             $router->redirect('login');
@@ -24,11 +22,7 @@ class Auth {
         if (!Form::valid_crfs_token($crfs))
             $router->redirect('registrar');
         
-        $id = uniqid();
-        $sql = "INSERT INTO usuarios(idUsuario, permissaoAdmin, nomeUsuario, email, senhaUsuario) VALUES ('$id', 0, '$nome', '$email', '$senha')";
-        $result = ExecQuery::insert($database->connect(), $sql);
-
-
+        Usuario::insert_usuario($nome, $email, $senha);
         $router->redirect('login');
     }
 
@@ -46,5 +40,16 @@ class Auth {
         return array('logado' => $logado, 'admin' => $admin);
     }
 
+
+    static function require_logado($req) {
+        global $router;
+        $data = self::logado();
+
+        if ($req)
+            if ($data['logado'] == FALSE)
+                $router->redirect('login');
+
+        return $data;
+    }
 }
 
