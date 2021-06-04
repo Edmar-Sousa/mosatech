@@ -10,11 +10,13 @@ class Usuario {
         return $result;
     }
 
-    static function insert_usuario($nome, $email, $senha) {
+    static function insert_usuario($nome, $email, $senha, $prioridade) {
         global $database;
 
         $id = uniqid();
-        $sql = "INSERT INTO usuarios(idUsuario, permissaoAdmin, nomeUsuario, email, senhaUsuario) VALUES ('$id', 0, '$nome', '$email', '$senha')";
+        $sql = "INSERT INTO usuarios(idUsuario, permissaoAdmin, nomeUsuario, email, senhaUsuario, src) VALUES ('$id', $prioridade, '$nome', '$email', '$senha', ' ')";
+    
+
         $result = ExecQuery::insert($database->connect(), $sql);
 
         return $result;

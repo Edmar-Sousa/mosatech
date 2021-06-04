@@ -41,6 +41,19 @@
                 </div>
             </div>
 
+            {% if admin == TRUE %}
+            <div class="form-group">
+                <label for="admin">Novo Admin</label>
+                <div class="row">
+                    <div class="col">
+                        <input type="radio" name="prioridade" value="admin"> Usuario Admin <br>
+                        <input type="radio" name="prioridade" value="normal"> Usuario Normal
+                    </div>
+                </div>
+            </div>
+
+            {% endif %}
+
             <div class="form-group">
                 Já tenho uma conta, faça <a href="login">Login</a>
             </div>

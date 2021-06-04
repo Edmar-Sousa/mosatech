@@ -2,7 +2,7 @@
 
 include_once 'core/Form/Form.class.php';
 
-class Client extends View {
+class ClientController {
     static function index() {
         global $view;
 
@@ -32,15 +32,24 @@ class Client extends View {
 
     static function registrar() {
         global $view;
-        $view->render('registrar.html', array('csrf' => Form::gerar_token()));
+
+        $data_user = Auth::logado();
+        $data_user['csrf'] = Form::gerar_token();
+
+        $view->render('registrar.html', $data_user);
     }
+
 
     static function register_post() {
         $campos = array('csrf', 'nome', 'email', 'senha');
-        $data = Form::isset_fields($campos);
 
-        Auth::registrar($data['csrf'], $data['nome'], $data['email'], $data['senha']);
+        $data = Form::isset_fields($campos);
+        if (!isset($_POST['prioridade']))
+            $data['prioridade'] = 'normal';
+
+        Auth::registrar($data['csrf'], $data['nome'], $data['email'], $data['senha'], $data['prioridade']);
     }
+    
 
     static function explorer() {
         global $view;
@@ -55,6 +64,7 @@ class Client extends View {
         $view->render('busca.html', $data);
     }
 
+
     static function detalhes() {
         global $view;
         $data = Auth::require_logado(TRUE);
@@ -63,108 +73,6 @@ class Client extends View {
             $data['produto'] = Produto::busca_id($_GET['idProduto'])[0];
 
         $view->render('detalhes.html', $data);
-    }
-
-
-    static function carrinho() {
-        global $view;
-        $user_login = Auth::require_logado(TRUE);
-
-        if (!isset($_SESSION['carrinho'][0])) 
-            $_SESSION['carrinho'][0] = array();
-
-        $campos = ['id', 'nome', 'src', 'pre'];
-        $data = Form::isset_fields($campos);
-
-
-        if ($data != FALSE)
-            array_push($_SESSION['carrinho'][0], array($data['id'], $data['nome'], $data['src'], $data['pre']));
-
-        $user_login['produto'] =  $_SESSION['carrinho'][0];
-        $view->render('carrinho.html', $user_login);
-    }
-
-
-    private static function find_prod() {
-        $index = 0;
-    
-        foreach ($_SESSION['carrinho'][0] as $array) {
-            if (in_array($_GET['idProdDel'], $array))
-                break;
-            $index++;
-        }
-    
-        return $index;
-    }
-
-    static function carrinho_del() {
-        global $router;
-
-        if (isset($_GET['idProdDel'])) {
-            $pos = self::find_prod();
-            unset($_SESSION['carrinho'][0][$pos]);
-        }
-
-        $router->redirect('carrinho');
-    }
-
-
-    static function delete_prod() {
-        global $router;
-        $user_login = Auth::require_logado(TRUE);
-
-        if (empty($user_login['admin']) or !isset($_POST['idProduto']))
-            $router->redirect('explorar');
-
-        Produto::delete_produto($_POST['idProduto'], $_POST['src']);
-        $router->redirect('explorar');
-    }
-
-
-    static function cadProdutos() {
-        global $router;
-        if (!Form::valid_crfs_token($_POST['csrf'])) $router->redirect('cadProduto');
-
-        
-        // upload file
-        $extUploadFiles = ['jpg', 'png'];
-
-        $file    = $_FILES['img_pro']['name'];
-        $tmpName = $_FILES['img_pro']['tmp_name'];
-        $extFile = pathinfo($file, PATHINFO_EXTENSION);
-
-        // gerar novo nome
-        $id = uniqid();
-        $uniqid = md5($id);
-        $nameUpload = "./src/uploads/{$uniqid}.{$extFile}";
-
-        if (!in_array($extFile, $extUploadFiles)) $router->redirect('cadProduto');
-        else move_uploaded_file($tmpName, $nameUpload);
-
-
-        $nomeProduto = $_POST['nome'];
-        $cameProduto = $_POST['camera'];
-        $procProduto = $_POST['processador'];
-        $RAMProduto  = $_POST['RAM'];
-        $telaProduto = $_POST['tela'];
-        $armaProduto = $_POST['armazenamento'];
-        $preco = $_POST['preco'];
-
-        Produto::cadastrar_produto($id, $nomeProduto, $cameProduto, $procProduto, $RAMProduto, $telaProduto, $armaProduto, $nameUpload, $preco);
-        $router->redirect('cadProduto');
-    }
-
-
-    static function cadProdutos_form() {
-        global $router, $view;
-        $user_login = Auth::require_logado(TRUE);
-
-        if (empty($user_login['admin']))
-            $router->redirect('login');
-
-        $user_login['csrf'] = Form::gerar_token();
-
-        $view->render('cadProduto.html', $user_login);
     }
 
 

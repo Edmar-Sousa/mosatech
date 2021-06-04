@@ -1,31 +1,31 @@
 <?php
 
 include_once 'controller/Client.class.php';
+include_once 'controller/Produto.class.php';
+include_once 'controller/Upload.class.php';
 
+$router->GET('index', 'ClientController@index');
 
-$router->GET('index', 'Client@index');
+$router->GET('login',  'ClientController@login');
+$router->POST('login', 'ClientController@login_post');
 
-$router->GET('login',  'Client@login');
-$router->POST('login', 'Client@login_post');
+$router->GET('registrar',  'ClientController@registrar');
+$router->POST('registrar', 'ClientController@register_post');
 
-$router->GET('registrar', 'Client@registrar');
-$router->POST('registrar', 'Client@register_post');
+$router->GET('explorar',  'ClientController@explorer');
+$router->POST('explorar', 'ClientController@explorer');
 
-$router->GET('explorar', 'Client@explorer');
-$router->POST('explorar', 'Client@explorer');
+$router->GET('detalhes', 'ClientController@detalhes');
 
-$router->GET('detalhes', 'Client@detalhes');
+$router->GET('carrinho',  'ProdutoController@carrinho');
+$router->GET('delProd',   'ProdutoController@carrinho_del');
+$router->POST('carrinho', 'ProdutoController@carrinho');
+$router->POST('deleteProd', 'ProdutoController@delete_prod');
 
-$router->GET('carrinho', 'Client@carrinho');
-$router->GET('delProd', 'Client@carrinho_del');
-$router->POST('carrinho', 'Client@carrinho');
+$router->GET('perfil', 'ClientController@profile');
+$router->GET('logout', 'ClientController@exit');
 
-$router->POST('deleteProd', 'Client@delete_prod');
-
-$router->GET('perfil', 'Client@profile');
-$router->GET('logout', 'Client@exit');
-
-$router->GET('cadProduto', 'Client@cadProdutos_form');
-$router->POST('upload', 'Client@cadProdutos');
+$router->GET('cadProduto', 'UploadController@cadProdutos_form');
+$router->POST('upload',    'UploadController@cadProdutos');
 
 $router->ROUTE($uri);

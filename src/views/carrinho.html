@@ -14,6 +14,8 @@
 
         <main id="main">
             <div>
+            <h2>Seu carrinho:</h2>
+            
             {% if produto|length > 0 %}
 
                 {% for prod in produto %}
@@ -33,16 +35,12 @@
                 </div>
                 {% endfor %}
             {% else %}
-                <br>
-                <br>
-                <br>
-                <br>
+                <br><br>
+
                 <h1>Nenhum item no carrinho!</h1>
                 <a href="explorar" >Faça uma compra!</a>
-                <br>
-                <br>
-                <br>
-                <br>
+                
+                <br><br>
             {% endif %}
 
             </div>

@@ -16,13 +16,15 @@ class Auth {
     }
 
     
-    static function registrar($crfs, $nome, $email, $senha) {
+    static function registrar($crfs, $nome, $email, $senha, $prioridade) {
         global $database, $router;
 
         if (!Form::valid_crfs_token($crfs))
             $router->redirect('registrar');
+
+        $nivel_usuario = $prioridade == 'admin' ? 1 : 0;
         
-        Usuario::insert_usuario($nome, $email, $senha);
+        Usuario::insert_usuario($nome, $email, $senha, $nivel_usuario);
         $router->redirect('login');
     }
 
