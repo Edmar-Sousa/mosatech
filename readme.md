@@ -1,12 +1,12 @@
 # Mosatech
 
 ### description
-Monzatech is a fictional company made for computer work.
+Monsatech is a fictional company made for computer work.
 The idea is to create a system for a store that sells smartphones
 
 
 ### descrição (pt-br)
-Monzatech é uma empresa fictícia feita para o trabalho de informatica. 
+Monsatech é uma empresa fictícia feita para o trabalho de informatica. 
 A ideia é criar um sistema para uma loja que vende smartphones
 
 ## parts of the project
