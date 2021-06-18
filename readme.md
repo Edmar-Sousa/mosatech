@@ -17,6 +17,7 @@ A ideia é criar um sistema para uma loja que vende smartphones
 - <b>Profile page</b>
 
 
+
 ## partes do projeto (pt-br)
 - <b>Pagina principal</b>
 - <b>Pagina de login</b>
