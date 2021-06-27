@@ -35,8 +35,9 @@ A ideia é criar um sistema para uma loja que vende smartphones
 - Upload files
 - XSS
 
-## segurança
+## segurança basic
 - Injeção de SQL
 - Upload de arquivos
 - XSS
+
 
